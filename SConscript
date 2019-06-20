@@ -7,12 +7,12 @@ cwd     = GetCurrentDir()
 src     = Glob('src/*.c')
 
 if GetDepend('LIBANN_USING_IRIS_LOAD_AND_PREDICT'):
-	src    += Glob('examples/ad7746_read_write_register.cpp')
+	src    += Glob('examples/iris_load_and_predict.c')
 
 if GetDepend('LIBANN_USING_IRIS_TRAIN_AND_PREDICT'):
-	src    += Glob('examples/ad7746_read_capacitance.cpp')
+	src    += Glob('examples/iris_load_and_predict.c')
 
-path   += [cwd + '/src']
+path   = [cwd + '/src']
 
 LOCAL_CCFLAGS = ''
 
