@@ -10,7 +10,7 @@ if GetDepend('LIBANN_USING_IRIS_LOAD_AND_PREDICT'):
 	src    += Glob('examples/iris_load_and_predict.c')
 
 if GetDepend('LIBANN_USING_IRIS_TRAIN_AND_PREDICT'):
-	src    += Glob('examples/iris_load_and_predict.c')
+	src    += Glob('examples/iris_train_and_predict.c')
 
 path   = [cwd + '/src']
 
