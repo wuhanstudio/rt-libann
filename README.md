@@ -52,7 +52,11 @@ RT-Thread online packages
 
 除了测试算力，这个软件包也可以帮助理解 ANN 模型结构，保存的模型使用的是 ASCII 格式，所以可以直接打开看模型各层大小和参数，每个隐藏层节点大小默认是一样的。
 
-## 5、联系方式
+## 5、感谢
+
+codeplea: [https://github.com/codeplea/genann](https://github.com/codeplea/genann)
+
+## 6、联系方式
 
 - 维护：Wu Han
 - 主页：http://wuhanstudio.cc
