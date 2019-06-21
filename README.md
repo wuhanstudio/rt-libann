@@ -34,9 +34,6 @@ iris 数据集在 doc/iris.data 里可以找到，当然也可以去官网下载
 
 如果从外部加载训练集或者模型，需要打开文件系统支持。
 
-- Using I2C device drivers
-- Use GPIO to simulate I2C
-
 ## 3、如何使用 libann
 
 使用 libann 需要在 RT-Thread 的包管理器中选择它，具体路径如下：
@@ -53,7 +50,7 @@ RT-Thread online packages
 
 这个库只是为了测试不同开发板运行 ANN 的计算能力而设置的，实际的机器学习流程需要 train test split, noramalization 等等。
 
-
+除了测试算力，这个软件包也可以帮助理解 ANN 模型结构，保存的模型使用的是 ASCII 格式，所以可以直接打开看模型各层大小和参数，每个隐藏层节点大小默认是一样的。
 
 ## 5、联系方式
 
