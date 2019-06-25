@@ -30,7 +30,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#ifdef RT_USING_DFS
 #include <dfs_posix.h>
+#endif
 
 #include "genann.h"
 
@@ -148,7 +151,7 @@ genann *genann_init(int inputs, int hidden_layers, int hidden, int outputs) {
     return ret;
 }
 
-
+#ifdef RT_USING_DFS
 genann *genann_read(const char* filename) {
     FILE *in = fopen(filename, "r");
     int inputs, hidden_layers, hidden, outputs;
@@ -179,7 +182,7 @@ genann *genann_read(const char* filename) {
 
     return ann;
 }
-
+#endif
 
 genann *genann_copy(genann const *ann) {
     const int size = sizeof(genann) + sizeof(double) * (ann->total_weights + ann->total_neurons + (ann->total_neurons - ann->inputs));
@@ -397,6 +400,7 @@ void genann_train(genann const *ann, double const *inputs, double const *desired
 
 }
 
+#ifdef RT_USING_DFS
 void genann_write(genann const *ann, const char* filename) {
     int out = open(filename, O_WRONLY | O_CREAT);
 
@@ -414,3 +418,4 @@ void genann_write(genann const *ann, const char* filename) {
     }
     close(out);
 }
+#endif
