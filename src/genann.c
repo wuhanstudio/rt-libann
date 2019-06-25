@@ -25,9 +25,7 @@
 
 #include <rtthread.h>
 #include <assert.h>
-#include <errno.h>
 #include <math.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -46,7 +44,7 @@
 #endif
 
 #define WEIGHT_BUFFER 30
-#define LOOKUP_SIZE 4096
+#define LOOKUP_SIZE 512
 
 double genann_act_hidden_indirect(const struct genann *ann, double a) {
     return ann->activation_hidden(ann, a);
@@ -212,7 +210,7 @@ void genann_randomize(genann *ann) {
 
 void genann_free(genann *ann) {
     /* The weight, output, and delta pointers go to the same buffer. */
-    free(ann);
+    rt_free(ann);
 }
 
 

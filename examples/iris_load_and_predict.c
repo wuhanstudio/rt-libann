@@ -119,7 +119,7 @@ static int iris_load_and_predict(int argc, char* argv[])
         if (class[j*3+0] == 1.0) {if (guess[0] > guess[1] && guess[0] > guess[2]) ++correct;}
         else if (class[j*3+1] == 1.0) {if (guess[1] > guess[0] && guess[1] > guess[2]) ++correct;}
         else if (class[j*3+2] == 1.0) {if (guess[2] > guess[0] && guess[2] > guess[1]) ++correct;}
-        else {printf("Logic error.\n"); exit(1);}
+        else {rt_kprintf("Logic error.\n"); exit(1);}
     }
     rt_kprintf("Predicting time %d ms\n", rt_tick_get() * 1000 / RT_TICK_PER_SECOND - start_time);
 
