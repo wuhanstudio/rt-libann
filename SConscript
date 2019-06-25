@@ -12,7 +12,12 @@ if GetDepend('LIBANN_USING_IRIS_LOAD_AND_PREDICT'):
 if GetDepend('LIBANN_USING_IRIS_TRAIN_AND_PREDICT'):
 	src    += Glob('examples/iris_train_and_predict.c')
 
-path   = [cwd + '/src']
+if GetDepend('LIBANN_USING_IRIS_TRAIN_AND_PREDICT_FLASH'):
+	src    += Glob('examples/iris_train_and_predict_flash.c')
+
+
+path   =  [cwd + '/src']
+path   += [cwd + '/examples']
 
 LOCAL_CCFLAGS = ''
 
