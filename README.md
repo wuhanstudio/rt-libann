@@ -2,15 +2,22 @@
 
 ## 1、介绍
 
-这是一个轻量级的 ANN 库，可以运行在 Flash，RAM 都非常有限的 stm32 上面。隐藏层节点数目可以选择，但是每个隐藏层节点大小默认一样。
+这是一个轻量级的 ANN 库，可以运行在 Flash，RAM 都非常有限的 stm32 上面。隐藏层节点数目可以选择，但是**每个隐藏层节点大小默认一样**。
 
-以经典的 Iris 数据集为例，使用一层隐藏层、隐藏层节点为4，训练 150 个样本，迭代 500 次，在 STM32L475VET6 上训练时间为 24 秒，预测时间为 22 毫秒，预测精度为 96.0%。
+以经典的 Iris 数据集为例，使用一层隐藏层、隐藏层节点为4，激活函数为 sigmoid，训练 150 个样本，迭代 500 次，下面是不同 MCU 训练时间。
 
-iris 数据集在 doc/iris.data 里可以找到，当然也可以去官网下载 https://archive.ics.uci.edu/ml/datasets/Iris/
+| MCU           | 训练时间 | 预测时间 | 预测精度 |
+| ------------- | -------- | -------- | -------- |
+| STM32L475VET6 | 24秒     | 22毫秒   | 96.0%    |
+| STM32F103RCT6 | 32秒     | 26毫秒   | 96.0%    |
+| STM32F103C8T6 | 32秒     | 26毫秒   | 96.0%    |
+| ATmega 2560   | 182秒    | 138毫秒  | 96.0%    |
+
+iris 数据集在 doc/iris.data 里可以找到，也可以去官网下载 https://archive.ics.uci.edu/ml/datasets/Iris/
 
 ![](doc/iris_train_and_predict.png)
 
-当然，示例程序只是为了 benchmark 计算力，并没有考虑 train test split，noramalization 等等，不过这说明一些比较小的 ANN 模型在 stm32 上还是可以跑跑前向传播的。 
+当然，示例程序只是为了 benchmark 计算力，并没有考虑 train test split，normalization 等等，不过这说明一些比较小的 ANN 模型在 stm32 上还是可以跑跑前向传播的。 
 
 
 
