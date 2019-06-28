@@ -19,7 +19,13 @@ iris 数据集在 doc/iris.data 里可以找到，也可以去官网下载 https
 
 ![](doc/iris_train_and_predict.png)
 
-当然，示例程序只是为了 benchmark 计算力，并没有考虑 train test split，normalization 等等，不过这说明一些比较小的 ANN 模型在 stm32 上还是可以跑跑前向传播的，当然前提是内存足够大能够顺利加载模型。 
+当然，示例程序只是为了 benchmark 计算力，并没有考虑 train test split，normalization 等等，不过这说明一些比较小的 ANN 模型在 stm32 上还是可以跑跑前向传播的，当然前提是内存足够大能够顺利加载模型。
+
+这是用 asciinema 录制的演示视频，你可以在自己的电脑上回放，视频保存在 doc/rt-thread.cast：
+
+`asciinema play rt-thread.cast`
+
+[![asciicast](https://asciinema.org/a/254036.svg)](https://asciinema.org/a/254036) 
 
 
 
