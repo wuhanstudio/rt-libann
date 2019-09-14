@@ -16,10 +16,12 @@ static double *input, *class;
 static int samples;
 static const char *class_names[] = {"Iris-setosa", "Iris-versicolor", "Iris-virginica"};
 
-static int load_data() {
+static int load_data() 
+{
     /* Load the iris data-set. */
     FILE *in = fopen(iris_data, "r");
-    if (!in) {
+    if (!in) 
+    {
         rt_kprintf("Could not open file: %s\n", iris_data);
         return -1;
     }
@@ -27,7 +29,8 @@ static int load_data() {
     /* Loop through the data to get a count. */
     char line[100];
     samples = 0;
-    while (!feof(in) && fgets(line, 100, in)) {
+    while (!feof(in) && fgets(line, 100, in)) 
+    {
         // rt_kprintf(line);
         ++samples;
     }
@@ -53,19 +56,22 @@ static int load_data() {
 
     /* Read the file into our arrays. */
     int i, j;
-    for (i = 0; i < samples; ++i) {
+    for (i = 0; i < samples; ++i) 
+    {
         double *p = input + i * 4;
         double *c = class + i * 3;
         c[0] = c[1] = c[2] = 0.0;
 
-        if (fgets(line, 100, in) == NULL) {
+        if (fgets(line, 100, in) == NULL) 
+        {
             rt_kprintf("Failed to read dataset\n");
             fclose(in);
             return -1;
         }
 
         char *split = strtok(line, ",");
-        for (j = 0; j < 4; ++j) {
+        for (j = 0; j < 4; ++j) 
+        {
             p[j] = atof(split);
             split = strtok(0, ",");
         }
@@ -74,7 +80,8 @@ static int load_data() {
         if (strcmp(split, class_names[0]) == 0) {c[0] = 1.0;}
         else if (strcmp(split, class_names[1]) == 0) {c[1] = 1.0;}
         else if (strcmp(split, class_names[2]) == 0) {c[2] = 1.0;}
-        else {
+        else 
+        {
             rt_kprintf("Unknown class %s.\n", split);
             fclose(in);
             return -1;
@@ -114,8 +121,10 @@ static int iris_train_and_predict(int argc, char* argv[])
     int loops = 500;
     rt_kprintf("Training for %d loops over data.\n", loops);
     unsigned long start_time = rt_tick_get() * 1000 / RT_TICK_PER_SECOND;
-    for (i = 0; i < loops; ++i) {
-        for (j = 0; j < samples; ++j) {
+    for (i = 0; i < loops; ++i) 
+    {
+        for (j = 0; j < samples; ++j) 
+        {
             genann_train(ann, input + j*4, class + j*3, .01);
         }
         if(i%100==0) rt_kprintf("Training Loop %d\n", i);
@@ -124,7 +133,8 @@ static int iris_train_and_predict(int argc, char* argv[])
 
     int correct = 0;
     start_time = rt_tick_get() * 1000 / RT_TICK_PER_SECOND;
-    for (j = 0; j < samples; ++j) {
+    for (j = 0; j < samples; ++j) 
+    {
         const double *guess = genann_run(ann, input + j*4);
         if (class[j*3+0] == 1.0) {if (guess[0] > guess[1] && guess[0] > guess[2]) ++correct;}
         else if (class[j*3+1] == 1.0) {if (guess[1] > guess[0] && guess[1] > guess[2]) ++correct;}
