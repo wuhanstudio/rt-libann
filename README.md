@@ -76,4 +76,4 @@ codeplea: [https://github.com/codeplea/genann](https://github.com/codeplea/genan
 
 - 维护：Wu Han
 - 主页：http://wuhanstudio.cc
-- 邮箱：https://github.com/wuhanstudio/rt-libann/issues
+- 联系：https://github.com/wuhanstudio/rt-libann/issues
